@@ -1,0 +1,66 @@
+<div class="container" *ngIf="person">
+  <h5 class="header">Charakterdetails</h5>
+  <h1 class="header">{{person?.name}}</h1>
+  <div class="row">
+    <div class="col-md">
+      <h5>Details:</h5>
+      <ul class="details">
+        <li><span class="title">Größe:</span> {{person?.height | unit:' cm'}}</li>
+        <li><span class="title">Gewicht:</span> {{person?.mass | unit: ' kg'}}</li>
+        <li><span class="title">Geburstjahr:</span> {{person?.birth_year}}</li>
+        <li><span class="title">Haarfarbe:</span> {{person?.hair_color}}</li>
+        <li><span class="title">Augenfarbe:</span> {{person?.eye_color}}</li>
+        <li><span class="title">Hautfarbe:</span> {{person?.skin_color}}</li>
+        <li><span class="title">Geschlecht:</span> {{person?.gender}}</li>
+      </ul>
+    </div>
+    <div class="col-md">
+      <img
+        src="https://cnet3.cbsistatic.com/img/j8LP96kbXPC3Yn-WuGzxNZ5tgNg=/940x0/2019/08/16/65ef0311-d2a6-49f4-9b55-5fce9e60e3a1/obi2.jpg"
+        class="d-block w-75">
+    </div>
+  </div>
+  <div class="row" *ngIf="homeworld">
+    <div class="col">
+      <h5>Heimatwelt:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li class="list-group-item">
+          <button type="button" (click)="this.helper.gotoPlanet(homeworld)"
+                  class="btn btn-outline-primary">{{homeworld.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngIf="films.length > 0">
+    <div class="col">
+      <h5>Filme:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let film of films" class="list-group-item">
+          <button type="button" (click)="this.helper.gotoFilm(film)"
+                  class="btn btn-outline-primary">{{film.title}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngIf="starships.length > 0">
+    <div class="col">
+      <h5>Raumschiffe:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let starship of starships" class="list-group-item">
+          <button type="button" class="btn btn-outline-primary">{{starship.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngIf="vehicles.length >0 ">
+    <div class="col">
+      <h5>Fahrzeuge:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let vehicle of vehicles" class="list-group-item">
+          <button type="button" class="btn btn-outline-primary">{{vehicle.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<app-not-found *ngIf="!person"></app-not-found>

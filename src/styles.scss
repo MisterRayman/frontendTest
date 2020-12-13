@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.cat-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 50px;
+}
+
+.input-group-append {
+  button {
+    padding-bottom: 0;
+  }
+}
+
+div .card.md {
+  margin-bottom: 2rem;
+}

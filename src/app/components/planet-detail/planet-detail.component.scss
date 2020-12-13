@@ -1,0 +1,23 @@
+.header {
+  text-align: center;
+}
+
+.details {
+  padding: 0;
+  list-style: none;
+  display: block;
+  .title {
+    font-weight: bold;
+  }
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  .list-group-item {
+    padding: 0.5rem 0.25rem;
+    border-style: none;
+    display: inline;
+  }
+}

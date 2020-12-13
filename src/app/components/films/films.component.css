@@ -1,0 +1,12 @@
+.cropAndResize {
+  height: 333px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("https://img.discogs.com/UGwESB_964rdoCoQIOz9XA7DecE=/fit-in/600x591/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6449163-1464357829-2539.jpeg.jpg");
+}
+
+ul {
+  list-style: none;
+}
+
+/*# sourceMappingURL=films.component.css.map */

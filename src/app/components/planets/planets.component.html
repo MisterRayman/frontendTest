@@ -1,0 +1,75 @@
+<div class="cat-header">
+  <h1>Planeten</h1>
+  <button type="button" (click)="open(addPlanet)" class="btn btn-outline-secondary">+</button>
+</div>
+<div *ngIf="planets.length > 0">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let planet of planets">
+      <div class="card md">
+        <div class="cropAndResize"></div>
+        <div class="card-body">
+          <h5 class="card-title">{{planet.name}}</h5>
+          <div class="card-text">
+            <ul>
+              <li>Durchmesser: {{planet.diameter | unit:' km'}}</li>
+              <li>Tageslänge: {{planet.orbital_period | unit: ' Standardtage'}}</li>
+              <li>Wasseranteil: {{planet.surface_water | unit:' %'}}</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="showPlanetDetail(planet)">Mehr Informationen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pageinator-btn container">
+    <div class="row">
+      <div class="col text-center">
+        <button type="button" (click)="previousPage()" [disabled]="disablePrevious"
+                class="btn btn-primary">Vorherige Seite
+        </button>
+        <button type="button" (click)="nextPage()" [disabled]="disableNext"
+                class="btn btn-primary">Nächste Seite
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-not-found *ngIf="!(planets.length > 0)"></app-not-found>
+
+<ng-template #addPlanet let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Planet hinzufügen</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" class="form-control" placeholder="Name eingeben">
+
+        <label for="type">Typ</label>
+        <select id="type" class="form-control">
+          <option selected>Wüstenplanet</option>
+          <option>Ozeanplanet</option>
+          <option>Dschungelplanet</option>
+        </select>
+
+        <label for="creator">Creator</label>
+        <select id="creator" class="form-control">
+          <option>George Lucas</option>
+          <option>Arnold Schwarzenegger</option>
+          <option>Mahatma Gandhi</option>
+        </select>
+
+        <label for="climate">Klima</label>
+        <input id="climate" type="text" class="form-control" placeholder="Klima eingeben">
+
+        <label for="species">Art</label>
+        <textarea id="species" class="form-control" placeholder="Arten per Semikolon getrennt"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Close')">Schließen</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Hinzufügen</button>
+  </div>
+</ng-template>

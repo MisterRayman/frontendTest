@@ -1,0 +1,91 @@
+<div class="cat-header">
+  <h1>Charaktere</h1>
+  <button type="button" (click)="open(addPerson)" class="btn btn-outline-secondary">+</button>
+</div>
+<div *ngIf="people.length > 0">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let char of people">
+      <div class="card md">
+        <div class="cropAndResize"></div>
+        <div class="card-body">
+          <h5 class="card-title">{{char.name}}</h5>
+          <div class="card-text">
+            <ul>
+              <li>Größe: {{char.height}} {{char.height === 'unknown' ? '' : 'cm'}}</li>
+              <li>Gewicht: {{char.mass}} {{char.mass === 'unknown' ? '' : 'kg'}}</li>
+              <li>Geburtsjahr: {{char.birth_year}}</li>
+            </ul>
+          </div>
+          <button (click)="showPeopleDetail(char)" class="btn btn-primary">Mehr Informationen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pageinator-btn container">
+    <div class="row">
+      <div class="col text-center">
+        <button type="button" (click)="previousPage()" [disabled]="disablePrevious"
+                class="btn btn-primary">Vorherige Seite
+        </button>
+        <button type="button" (click)="nextPage()" [disabled]="disableNext"
+                class="btn btn-primary">Nächste Seite
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-not-found *ngIf="!(people.length > 0)"></app-not-found>
+
+<ng-template #addPerson let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Charakter hinzufügen</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <label for="title">Name</label>
+              <input id="title" type="text" class="form-control" placeholder="Name eingeben">
+            </div>
+          </div>
+          <div class="row" style="margin-top: 0.5rem;">
+            <div class="col-6">
+              <label for="height">Größe</label>
+              <input id="height" type="text" class="form-control" placeholder="Centimeter">
+
+              <label for="hair_color">Haarfarbe</label>
+              <input id="hair_color" type="text" class="form-control" placeholder="Haarfarbe eingeben">
+
+              <label for="birthyear">Geburtsjahr</label>
+              <input id="birthyear" type="text" class="form-control" placeholder="YYYY">
+            </div>
+            <div class="col-6">
+              <label for="mass">Geburtsjahr</label>
+              <input id="mass" type="text" class="form-control" placeholder="Kg">
+
+              <label for="eye_color">Augenfarbe</label>
+              <select id="eye_color" type="text" class="form-control">
+                <option selected>Blau</option>
+                <option>Grün</option>
+                <option>Braun</option>
+              </select>
+
+              <label for="gender">Geschlecht</label>
+              <select id="gender" type="text" class="form-control">
+                <option selected>Divers</option>
+                <option>Weiblich</option>
+                <option>Männlich</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Close')">Schließen</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Hinzufügen</button>
+  </div>
+</ng-template>

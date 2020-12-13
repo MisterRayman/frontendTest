@@ -1,0 +1,46 @@
+<div class="container" *ngIf="planet">
+  <h1 class="header">{{planet?.name}}</h1>
+  <div class="row">
+    <div class="col-md">
+      <h5>Details:</h5>
+      <ul class="details">
+        <li><span class="title">Umfang:</span> {{planet?.diameter | unit:' km'}}</li>
+        <li><span class="title">Rotationsperiode:</span> {{planet?.rotation_period | unit: ' Standardstunden'}}</li>
+        <li><span class="title">Umlaufperiode:</span> {{planet?.orbital_period | unit: ' Standardtage'}}</li>
+        <li><span class="title">Schwerkraft:</span> {{planet?.gravity | unit: ' G'}}</li>
+        <li><span class="title">Bevölkerung:</span> {{planet?.population}}</li>
+        <li><span class="title">Klima:</span> {{planet?.climate}}</li>
+        <li><span class="title">Terrain:</span> {{planet?.terrain}}</li>
+        <li><span class="title">Wasseranteil:</span> {{planet?.surface_water | unit: ' %'}}</li>
+      </ul>
+    </div>
+    <div class="col-md">
+      <img
+        src="https://cdna.artstation.com/p/assets/images/images/017/390/192/large/brian-hagan-pla-ossus-final.jpg?1555781865"
+        class="d-block w-75">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h5>Filme:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let film of films" class="list-group-item">
+          <button type="button" (click)="this.helper.gotoFilm(film)"
+                  class="btn btn-outline-primary">{{film.title}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h5>Charaktere:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let char of people" class="list-group-item">
+          <button type="button" (click)="this.helper.gotoPerson(char)"
+                  class="btn btn-outline-primary">{{char.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<app-not-found *ngIf="!planet"></app-not-found>

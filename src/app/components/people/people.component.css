@@ -1,0 +1,19 @@
+.card .card-text ul {
+  list-style: none;
+}
+
+.cropAndResize {
+  height: 333px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("https://qph.fs.quoracdn.net/main-qimg-f4b94fb697abf924ad34cd2f2a649bb1");
+}
+
+.pageinator-btn button {
+  margin-top: 1.5rem;
+  margin-top: 1.5rem;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+/*# sourceMappingURL=people.component.css.map */

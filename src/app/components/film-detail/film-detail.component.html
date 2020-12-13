@@ -1,0 +1,64 @@
+<div class="container" *ngIf="film">
+  <h1 class="header">{{film?.title}}</h1>
+  <h5 class="header">Episode {{film?.episode_id}}</h5>
+  <div class="row">
+    <div class="col-md">
+      <h5>Details:</h5>
+      <ul class="details">
+        <li><span class="title">Regiesseur:</span> {{film?.director}}</li>
+        <li><span class="title">Produzenten:</span> {{film?.producer}}</li>
+        <li><span class="title">Erscheinungsdatum:</span> {{film?.release_date |date: 'dd MMM yyyy'}}</li>
+        <li>{{film?.opening_crawl}}</li>
+
+      </ul>
+    </div>
+    <div class="col-md">
+      <img
+        src="https://img.discogs.com/UGwESB_964rdoCoQIOz9XA7DecE=/fit-in/600x591/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6449163-1464357829-2539.jpeg.jpg"
+        class="d-block w-75">
+    </div>
+  </div>
+  <div class="row" *ngIf="planets.length > 0">
+    <div class="col">
+      <h5>Planeten:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let planet of planets" class="list-group-item">
+          <button type="button" (click)="this.helper.gotoPlanet(planet)"
+                  class="btn btn-outline-primary">{{planet.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngIf="people.length > 0">
+    <div class="col">
+      <h5>Charaktere:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let char of people" class="list-group-item">
+          <button type="button" (click)="this.helper.gotoPerson(char)"
+                  class="btn btn-outline-primary">{{char.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngIf="starships.length > 0">
+    <div class="col">
+      <h5>Raumschiffe:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let starship of starships" class="list-group-item">
+          <button type="button" class="btn btn-outline-primary">{{starship.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngIf="vehicles.length > 0">
+    <div class="col">
+      <h5>Fahrzeuge:</h5>
+      <ul class="list-group list-group-horizontal-lg list-group-horizontal-md">
+        <li *ngFor="let vehicle of vehicles" class="list-group-item">
+          <button type="button" class="btn btn-outline-primary">{{vehicle.name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<app-not-found *ngIf="!film"></app-not-found>
